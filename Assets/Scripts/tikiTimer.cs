@@ -8,6 +8,7 @@ public class tikiTimer : MonoBehaviour {
 	public float timeleft;
 	public int currStage = 4;
 	public Sprite[] tikis;
+	public GameObject[] particles;
 
 	GameObject timeBar;
 
@@ -26,6 +27,7 @@ public class tikiTimer : MonoBehaviour {
 			timeleft = timer;
 			GetComponent<Animation> ().Play ();
 			GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
+			GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage];
 			currStage--;
 
 			if (currStage >= 0 && currStage < 5) {
@@ -56,6 +58,7 @@ public class tikiTimer : MonoBehaviour {
 
 		if (currStage >= 0 && currStage < 5) {
 			GetComponent<Image> ().sprite = tikis [currStage];
+
 		}
 
 		if (currStage == 0) {
