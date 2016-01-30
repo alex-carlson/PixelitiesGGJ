@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: bc4030259f42746a690d425b6a2537c0
+timeCreated: 1454155345
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Steam_Sprites_0
+    21300002: Steam_Sprites_1
+    21300004: Steam_Sprites_2
+    21300006: Steam_Sprites_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Steam_Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 8
+        width: 237
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118.5, y: -9}
+        - {x: 117.5, y: 0}
+        - {x: 85.5, y: 52}
+        - {x: 85.5, y: 105}
+        - {x: 25.5, y: 118}
+        - {x: -2.5, y: 122}
+        - {x: -61.5, y: 122}
+        - {x: -83.5, y: 108}
+        - {x: -116.5, y: 34}
+        - {x: -117.5, y: 10}
+        - {x: -118.5, y: 5}
+        - {x: -118.5, y: -71}
+        - {x: -104.5, y: -85}
+        - {x: -18.5, y: -122}
+        - {x: 32.5, y: -122}
+        - {x: 79.5, y: -108}
+        - {x: 115.5, y: -78}
+        - {x: 118.5, y: -71}
+    - name: Steam_Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 5
+        width: 229
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 111.5, y: -52.5}
+        - {x: 114.5, y: -40.5}
+        - {x: 114.5, y: 28.5}
+        - {x: 109.5, y: 34.5}
+        - {x: 64.5, y: 67.5}
+        - {x: 63.5, y: 96.5}
+        - {x: 34.5, y: 123.5}
+        - {x: -37.5, y: 123.5}
+        - {x: -88.5, y: 103.5}
+        - {x: -114.5, y: 42.5}
+        - {x: -114.5, y: -80.5}
+        - {x: -80.5, y: -123.5}
+        - {x: -17.5, y: -123.5}
+        - {x: 18.5, y: -111.5}
+        - {x: 42.5, y: -112.5}
+        - {x: 71.5, y: -72.5}
+    - name: Steam_Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 10
+        width: 254
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 125, y: 18.5}
+        - {x: 103, y: 32.5}
+        - {x: 111, y: 95.5}
+        - {x: 76, y: 118.5}
+        - {x: -64, y: 118.5}
+        - {x: -111, y: 104.5}
+        - {x: -106, y: 75.5}
+        - {x: -103, y: 65.5}
+        - {x: -126, y: 17.5}
+        - {x: -127, y: 15.5}
+        - {x: -127, y: -41.5}
+        - {x: -94, y: -103.5}
+        - {x: -66, y: -114.5}
+        - {x: -42, y: -118.5}
+        - {x: 32, y: -118.5}
+        - {x: 111, y: -63.5}
+        - {x: 127, y: -44.5}
+        - {x: 127, y: 9.5}
+    - name: Steam_Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 6
+        width: 231
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 115.5, y: 69}
+        - {x: 108.5, y: 74}
+        - {x: 65.5, y: 123}
+        - {x: -20.5, y: 123}
+        - {x: -34.5, y: 82}
+        - {x: -68.5, y: 90}
+        - {x: -94.5, y: 70}
+        - {x: -112.5, y: 23}
+        - {x: -115.5, y: 12}
+        - {x: -115.5, y: -47}
+        - {x: -96.5, y: -91}
+        - {x: -66.5, y: -123}
+        - {x: 27.5, y: -123}
+        - {x: 77.5, y: -113}
+        - {x: 115.5, y: -43}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
