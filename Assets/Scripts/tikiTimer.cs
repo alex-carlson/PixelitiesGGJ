@@ -9,14 +9,18 @@ public class tikiTimer : MonoBehaviour {
 	public int currStage = 4;
 	public Sprite[] tikis;
 
+	GameObject timeBar;
+
 	// Use this for initialization
 	void Start () {
 		timeleft = timer;
+		timeBar = GameObject.Find ("TimeLeft");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timeleft -= Time.deltaTime;
+		timeBar.GetComponent<RectTransform> ().sizeDelta = new Vector2 (timeleft * 10, 20);
 
 		if (timeleft <= 0) {
 			timeleft = timer;
