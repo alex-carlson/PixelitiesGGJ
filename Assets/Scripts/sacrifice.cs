@@ -8,9 +8,19 @@ public class sacrifice : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if (col.gameObject.tag == "Pickup") {
-			Destroy (col.gameObject);
-			score++;
-			GameObject.Find ("Score").GetComponent<Text> ().text = score+"";
+
+			GameObject tik = GameObject.Find ("Anger");
+			string theObject = GameObject.Find ("SacText").GetComponent<Text> ().text;
+
+			if (col.transform.root.gameObject.name == theObject) {
+				score++;
+				GameObject.Find ("Score").GetComponent<Text> ().text = score + "";
+				tik.GetComponent<tikiTimer> ().timeleft = tik.GetComponent<tikiTimer> ().timer;
+				tik.GetComponent<tikiTimer> ().currStage++;
+				tik.GetComponent<tikiTimer> ().update2 ();
+			}
+
+			Destroy (col.transform.root.gameObject);
 		}
 	}
 }

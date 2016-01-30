@@ -22,6 +22,8 @@ public class grabObject : MonoBehaviour {
 	GameObject cursor;
 	LineRenderer lr;
 
+	private Vector3 velocity = Vector3.zero;
+
 	void Start() {
 		Cursor.lockState = CursorLockMode.Locked;
 		cursor = GameObject.Find ("Cursor");
@@ -49,7 +51,14 @@ public class grabObject : MonoBehaviour {
 		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
 		if (heldObject != null && isHolding == true) {
-			heldObject.transform.position = Camera.main.transform.position + (camFwd.forward * 4);
+			
+			heldObject.transform.position = Vector3.SmoothDamp (
+				heldObject.transform.position,
+				Camera.main.transform.position + (camFwd.forward * 4),
+				ref velocity,
+				0.1f
+			);
+
 			heldObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 			heldObject.transform.rotation = Quaternion.identity;
 		}
