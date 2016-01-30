@@ -27,7 +27,7 @@ public class tikiTimer : MonoBehaviour {
 			timeleft = timer;
 			GetComponent<Animation> ().Play ();
 			GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
-			GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage];
+			GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage-1];
 			currStage--;
 
 			if (currStage >= 0 && currStage < 5) {
