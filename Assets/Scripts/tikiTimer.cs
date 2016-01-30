@@ -6,7 +6,7 @@ public class tikiTimer : MonoBehaviour {
 
 	public float timer = 15f;
 	public float timeleft;
-	public int currStage = 5;
+	public int currStage = 4;
 	public Sprite[] tikis;
 
 	// Use this for initialization
@@ -50,7 +50,7 @@ public class tikiTimer : MonoBehaviour {
 		GetComponent<Animation> ().Play ();
 		GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
 
-		if (currStage >= 0) {
+		if (currStage >= 0 && currStage < 5) {
 			GetComponent<Image> ().sprite = tikis [currStage];
 		}
 
