@@ -42,6 +42,7 @@ public class grabObject : MonoBehaviour {
 
 		if (heldObject != null && isHolding == true) {
 			heldObject.transform.position = Camera.main.transform.position + (camFwd.forward * 4);
+			heldObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 			heldObject.transform.rotation = Quaternion.identity;
 		}
 
@@ -56,8 +57,8 @@ public class grabObject : MonoBehaviour {
 
 					if (isHolding == false) {
 						isHolding = true;
+						heldObject.GetComponent<AudioSource> ().Play ();
 					} else {
-						Debug.Log (camFwd.up);
 						heldObject.GetComponent<Rigidbody> ().AddForce ((camFwd.forward * force) * 60);
 						isHolding = false;
 					}
