@@ -26,7 +26,19 @@ public class grabObject : MonoBehaviour {
 		camFwd = Camera.main.transform;
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
+		Debug.DrawRay (transform.position, camFwd.forward, Color.red);
+
 		RaycastHit hit;
+
+		yaw += speedH * Input.GetAxis("Mouse X");
+		pitch -= speedV * Input.GetAxis("Mouse Y");
+
+		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+
+		if (heldObject != null && isHolding == true) {
+			heldObject.transform.position = Camera.main.transform.position + (camFwd.forward * 4);
+			heldObject.transform.rotation = Quaternion.identity;
+		}
 
 		if (Physics.Raycast(transform.position, fwd, out hit)) {
 			if (hit.transform.tag == "Pickup") {
@@ -38,7 +50,8 @@ public class grabObject : MonoBehaviour {
 					if (isHolding == false) {
 						isHolding = true;
 					} else {
-						heldObject.GetComponent<Rigidbody> ().AddForce (camFwd.forward * force * 20);
+						Debug.Log (camFwd.up);
+						heldObject.GetComponent<Rigidbody> ().AddForce ((camFwd.forward * force) * 60);
 						isHolding = false;
 					}
 				}
@@ -49,15 +62,6 @@ public class grabObject : MonoBehaviour {
 				}
 			}
 
-		}
-
-		yaw += speedH * Input.GetAxis("Mouse X");
-		pitch -= speedV * Input.GetAxis("Mouse Y");
-
-		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-
-		if (heldObject != null && isHolding == true) {
-			heldObject.transform.position = Camera.main.transform.position + (camFwd.forward * 4);
 		}
 	}
 }
