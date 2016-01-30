@@ -20,10 +20,12 @@ public class grabObject : MonoBehaviour {
 	public Sprite activeCursor;
 	public Sprite inactiveCursor;
 	GameObject cursor;
+	LineRenderer lr;
 
 	void Start() {
 		Cursor.lockState = CursorLockMode.Locked;
 		cursor = GameObject.Find ("Cursor");
+		lr = GetComponent<LineRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -32,6 +34,14 @@ public class grabObject : MonoBehaviour {
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
 		RaycastHit hit;
+
+//		lr.SetPosition (0, transform.position+Vector3.down);
+//		lr.SetPosition(1, 
+//			Vector3.Lerp(
+//				transform.position, camFwd.position + camFwd.forward*7 + camFwd.up * 2, 0.5f
+//			) 
+//		);
+//		lr.SetPosition(2, Camera.main.transform.position + camFwd.forward * 10);
 
 		yaw += speedH * Input.GetAxis("Mouse X");
 		pitch -= speedV * Input.GetAxis("Mouse Y");
@@ -55,7 +65,9 @@ public class grabObject : MonoBehaviour {
 
 					if (isHolding == false) {
 						isHolding = true;
-						heldObject.GetComponent<AudioSource> ().Play ();
+						if (heldObject.GetComponent<AudioSource> ()) {
+							heldObject.GetComponent<AudioSource> ().Play ();
+						}
 					} else {
 						heldObject.GetComponent<Rigidbody> ().AddForce ((camFwd.forward * force) * 60);
 						isHolding = false;
