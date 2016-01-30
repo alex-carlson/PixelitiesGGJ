@@ -20,19 +20,18 @@ public class animalSounds : MonoBehaviour {
 	void Update () {
 		if (rb.velocity.magnitude > 2f) {
 			StartCoroutine (throwAnimal());
-		} else {
-			aud.clip = pickupSound;
 		}
 	}
 
 	public IEnumerator throwAnimal(){
+		Debug.Log ("throwing");
 		aud.clip = throwSound;
 		aud.Play ();
 		yield return null;
 	}
 
 	public IEnumerator idleSound(){
-		yield return new WaitForSeconds(Mathf.Round(Random.Range(5, 15)));
+		yield return new WaitForSeconds(Mathf.Round(Random.Range(15, 30)));
 		aud.Play ();
 		StartCoroutine (idleSound ());
 	}
