@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using Rewired;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -42,6 +43,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+		private Player player;
+		public int playerid = 0;
+
+		void Awake(){
+			player = ReInput.players.GetPlayer(playerid);
+		}
+
         // Use this for initialization
         private void Start()
         {
@@ -61,6 +69,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -204,8 +213,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void GetInput(out float speed)
         {
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+			float horizontal = player.GetAxis ("Move Horizontal");
+			float vertical = player.GetAxis ("Move Vertical");
 
             bool waswalking = m_IsWalking;
 
