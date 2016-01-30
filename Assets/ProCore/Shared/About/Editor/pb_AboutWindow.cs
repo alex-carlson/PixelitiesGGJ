@@ -1,8 +1,3 @@
-// Todo - Implement a base AboutWindow class and figure a better way to manage multiple instances.
-#if UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_3_0 || UNITY_4_3_1 || UNITY_4_3_2 || UNITY_4_3_3 || UNITY_4_3_4 || UNITY_4_3_5 || UNITY_4_3_6 || UNITY_4_3_7 || UNITY_4_3_8 || UNITY_4_3_9 || UNITY_4_4 || UNITY_4_4_0 || UNITY_4_4_1 || UNITY_4_4_2 || UNITY_4_4_3 || UNITY_4_4_4 || UNITY_4_4_5 || UNITY_4_4_6 || UNITY_4_4_7 || UNITY_4_4_8 || UNITY_4_4_9 || UNITY_4_5 || UNITY_4_5_0 || UNITY_4_5_1 || UNITY_4_5_2 || UNITY_4_5_3 || UNITY_4_5_4 || UNITY_4_5_5 || UNITY_4_5_6 || UNITY_4_5_7 || UNITY_4_5_8 || UNITY_4_5_9 || UNITY_4_6 || UNITY_4_6_0 || UNITY_4_6_1 || UNITY_4_6_2 || UNITY_4_6_3 || UNITY_4_6_4 || UNITY_4_6_5 || UNITY_4_6_6 || UNITY_4_6_7 || UNITY_4_6_8 || UNITY_4_6_9 || UNITY_4_7 || UNITY_4_7_0 || UNITY_4_7_1 || UNITY_4_7_2 || UNITY_4_7_3 || UNITY_4_7_4 || UNITY_4_7_5 || UNITY_4_7_6 || UNITY_4_7_7 || UNITY_4_7_8 || UNITY_4_7_9 || UNITY_4_8 || UNITY_4_8_0 || UNITY_4_8_1 || UNITY_4_8_2 || UNITY_4_8_3 || UNITY_4_8_4 || UNITY_4_8_5 || UNITY_4_8_6 || UNITY_4_8_7 || UNITY_4_8_8 || UNITY_4_8_9
-#define UNITY_4
-#endif
-
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
@@ -36,12 +31,6 @@ public class pb_AboutWindowSetup : AssetPostprocessor
 			if( pb_AboutWindow.Init(str, false) )
 				break;
 	}
-
-	// [MenuItem("Edit/Preferences/Clear About Version: " + AboutWindow.PRODUCT_IDENTIFIER)]
-	// public static void MenuClearVersionPref()
-	// {
-	// 	EditorPrefs.DeleteKey(AboutWindow.PRODUCT_IDENTIFIER);
-	// }
 #endregion
 }
 
@@ -53,8 +42,10 @@ public class pb_AboutWindow : EditorWindow
  */
 #region User Settings
 
+ 	const string PACKAGE_NAME = "ProBuilder";
+
 	 /* Path to the root folder */
-	const string ABOUT_ROOT = "Assets/ProCore/Shared/About";
+	const string ABOUT_ROOT = "Assets/ProCore/" + PACKAGE_NAME + "/About";
 	
 	/**
 	 * Changelog.txt file should follow this format:
@@ -128,7 +119,8 @@ public class pb_AboutWindow : EditorWindow
 		public AdvertisementThumb(string imagePath, string url, string about)
 		{
 			guiContent = new GUIContent("", about);
-			this.image = (Texture2D) AssetDatabase.LoadAssetAtPath(imagePath, typeof(Texture2D));
+			this.image = LoadAssetAtPath<Texture2D>(imagePath);
+
 			guiContent.image = this.image;
 			this.url = url;
 			this.about = about;
@@ -142,17 +134,6 @@ public class pb_AboutWindow : EditorWindow
 #endregion
 
 #region Init
-
-	// [MenuItem("Tools/Test Search About Window", false, 0)]
-	// public static void MenuInit()
-	// {
-	// 	// this could be slow in large projects?
-	// 	string[] allFiles = System.IO.Directory.GetFiles("Assets/", "*.*", System.IO.SearchOption.AllDirectories);
-	// 	string[] entries = System.Array.FindAll(allFiles, name => name.Contains("pc_AboutEntry"));
-		
-	// 	if(entries.Length > 0)
-	// 		AboutWindow.Init(entries[0], true);
-	// }
 
 	/**
 	 * Return true if Init took place, false if not.
@@ -189,23 +170,28 @@ public class pb_AboutWindow : EditorWindow
 
 	public void OnEnable()
 	{
-		banner = (Texture2D)AssetDatabase.LoadAssetAtPath(BannerPath, typeof(Texture2D));
+		banner = LoadAssetAtPath<Texture2D>(BannerPath);
 
 		// With Unity 4 (on PC) if you have different values for minSize and maxSize,
 		// they do not apply restrictions to window size.
-		#if UNITY_4
+#if !UNITY_5
 		this.minSize = new Vector2(banner.width + 12, banner.height * 7);
 		this.maxSize = new Vector2(banner.width + 12, banner.height * 7);
-		#else
+#else
 		this.minSize = new Vector2(banner.width + 12, banner.height * 6);
 		this.maxSize = new Vector2(banner.width + 12, 1440);
-		#endif
+#endif
 	}
 
 	public void SetAboutEntryPath(string path)
 	{
 		AboutEntryPath = path;
 		PopulateDataFields(AboutEntryPath);
+	}
+
+	static T LoadAssetAtPath<T>(string InPath) where T : UnityEngine.Object
+	{
+		return (T) AssetDatabase.LoadAssetAtPath(InPath, typeof(T));
 	}
 #endregion
 
@@ -364,7 +350,7 @@ public class pb_AboutWindow : EditorWindow
 	void PopulateDataFields(string entryPath)
 	{
 		/* Get data from VersionInfo.txt */
-		TextAsset versionInfo = (TextAsset)AssetDatabase.LoadAssetAtPath( entryPath, typeof(TextAsset));
+		TextAsset versionInfo = LoadAssetAtPath<TextAsset>( entryPath );
 		
 		ProductName = "";
 		// ProductIdentifer = "";
@@ -394,7 +380,7 @@ public class pb_AboutWindow : EditorWindow
 		// notes = notes.Trim();
 
 		/* Get first entry in changelog.txt */
-		TextAsset changelogText = (TextAsset)AssetDatabase.LoadAssetAtPath( ChangelogPath, typeof(TextAsset));
+		TextAsset changelogText = LoadAssetAtPath<TextAsset>( ChangelogPath );
 
 		if(changelogText)
 		{
@@ -410,7 +396,8 @@ public class pb_AboutWindow : EditorWindow
 
 	private static bool GetField(string path, string field, out string value)
 	{
-		TextAsset entry = (TextAsset)AssetDatabase.LoadAssetAtPath(path, typeof(TextAsset));
+		TextAsset entry = LoadAssetAtPath<TextAsset>(path);
+
 		value = "";
 
 		if(!entry) return false;
