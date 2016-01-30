@@ -3,7 +3,7 @@ using System.Collections;
 
 public class domeRotator : MonoBehaviour
 {
-	public float speed = 1.5f;
+	public int speed = 10;
 	// Use this for initialization
 	void Start ()
 	{
