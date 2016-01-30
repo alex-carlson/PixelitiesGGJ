@@ -31,8 +31,6 @@ public class grabObject : MonoBehaviour {
 		camFwd = Camera.main.transform;
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-		Debug.DrawRay (transform.position, camFwd.forward, Color.red);
-
 		RaycastHit hit;
 
 		yaw += speedH * Input.GetAxis("Mouse X");
@@ -65,11 +63,6 @@ public class grabObject : MonoBehaviour {
 				}
 			} else {
 				cursor.GetComponent<Image> ().sprite = inactiveCursor;
-
-				// didn't click on a pickupable thing
-				if(Input.GetButtonDown("Fire1")){
-					
-				}
 			}
 
 		}

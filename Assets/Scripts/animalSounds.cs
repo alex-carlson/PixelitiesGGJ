@@ -25,6 +25,7 @@ public class animalSounds : MonoBehaviour {
 
 	public IEnumerator throwAnimal(){
 		Debug.Log ("throwing");
+		aud.Stop ();
 		aud.clip = throwSound;
 		aud.Play ();
 		yield return null;
