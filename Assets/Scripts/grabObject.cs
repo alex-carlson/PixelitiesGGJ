@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class grabObject : MonoBehaviour {
 
@@ -16,9 +17,13 @@ public class grabObject : MonoBehaviour {
 
 	bool isHolding = false;
 	Transform camFwd;
+	public Sprite activeCursor;
+	public Sprite inactiveCursor;
+	GameObject cursor;
 
 	void Start() {
 		Cursor.lockState = CursorLockMode.Locked;
+		cursor = GameObject.Find ("Cursor");
 	}
 	
 	// Update is called once per frame
@@ -43,6 +48,8 @@ public class grabObject : MonoBehaviour {
 		if (Physics.Raycast(transform.position, fwd, out hit)) {
 			if (hit.transform.tag == "Pickup") {
 
+				cursor.GetComponent<Image> ().sprite = activeCursor;
+
 				// clicked on a pickupable thing
 				if (Input.GetButtonDown ("Fire1")) {
 					heldObject = hit.transform.gameObject;
@@ -56,6 +63,8 @@ public class grabObject : MonoBehaviour {
 					}
 				}
 			} else {
+				cursor.GetComponent<Image> ().sprite = inactiveCursor;
+
 				// didn't click on a pickupable thing
 				if(Input.GetButtonDown("Fire1")){
 					
