@@ -22,6 +22,10 @@ public class grabObject : MonoBehaviour {
 	GameObject cursor;
 	LineRenderer lr;
 
+	[Range(0, 1)] public float smoothSpeed = 0.1f;
+	[Range(0, 1)] public float magnitude = 0.1f;
+	[Range(0, 1)] public float shakeTime = 0.1f;
+
 	private Vector3 velocity = Vector3.zero;
 
 	void Start() {
@@ -68,6 +72,18 @@ public class grabObject : MonoBehaviour {
 
 				cursor.GetComponent<Image> ().sprite = activeCursor;
 
+				cursor.GetComponent<RectTransform> ().sizeDelta = Vector2.Lerp (
+					cursor.GetComponent<RectTransform> ().sizeDelta,
+					new Vector2(128, 128),
+					smoothSpeed
+				);
+
+				cursor.GetComponent<RectTransform> ().localRotation = Quaternion.Slerp (
+					cursor.GetComponent<RectTransform> ().localRotation,
+					Quaternion.Euler(0, 0, 180),
+					Time.deltaTime/smoothSpeed
+				);
+
 				// clicked on a pickupable thing
 				if (Input.GetButtonDown ("Fire1")) {
 					heldObject = hit.transform.gameObject;
@@ -84,8 +100,47 @@ public class grabObject : MonoBehaviour {
 				}
 			} else {
 				cursor.GetComponent<Image> ().sprite = inactiveCursor;
+				cursor.GetComponent<RectTransform> ().sizeDelta = Vector2.Lerp (
+					cursor.GetComponent<RectTransform> ().sizeDelta,
+					new Vector2(256, 256),
+					smoothSpeed
+				);
+				cursor.GetComponent<RectTransform> ().localRotation = Quaternion.Slerp (
+					cursor.GetComponent<RectTransform> ().localRotation,
+					Quaternion.Euler(0, 0, 0),
+					Time.deltaTime/smoothSpeed
+				);
 			}
 
 		}
+	}
+	public void doShake(){
+		//StartCoroutine (Shake ());
+	}
+	IEnumerator Shake() {
+
+		float elapsed = 0.0f;
+
+		Vector3 originalCamPos = Camera.main.transform.position;
+
+		while (elapsed < shakeTime) {
+
+			elapsed += Time.deltaTime;          
+
+			float percentComplete = elapsed / shakeTime;         
+			float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+			// map value to [-1, 1]
+			float x = Random.value * 2.0f - 1.0f;
+			float y = Random.value * 2.0f - 1.0f;
+			x *= magnitude * damper;
+			y *= magnitude * damper;
+
+			Camera.main.transform.position = new Vector3(x, y, originalCamPos.z);
+
+			yield return null;
+		}
+
+		Camera.main.transform.position = originalCamPos;
 	}
 }

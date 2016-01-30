@@ -28,7 +28,7 @@ public class tikiTimer : MonoBehaviour {
 			GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
 			currStage--;
 
-			if (currStage >= 0) {
+			if (currStage >= 0 && currStage < 5) {
 				GetComponent<Image> ().sprite = tikis [currStage];
 			}
 

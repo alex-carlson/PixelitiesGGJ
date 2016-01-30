@@ -19,7 +19,9 @@ public class animalSounds : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (rb.velocity.magnitude > 2f) {
-			StartCoroutine (throwAnimal());
+			StartCoroutine (throwAnimal ());
+		} else {
+			aud.clip = pickupSound;
 		}
 	}
 
@@ -31,7 +33,7 @@ public class animalSounds : MonoBehaviour {
 	}
 
 	public IEnumerator idleSound(){
-		yield return new WaitForSeconds(Mathf.Round(Random.Range(15, 30)));
+		yield return new WaitForSeconds(Mathf.Round(Random.Range(30, 60)));
 		aud.Play ();
 		StartCoroutine (idleSound ());
 	}

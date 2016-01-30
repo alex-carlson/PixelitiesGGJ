@@ -1,0 +1,17 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class destroySelf : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+		StartCoroutine (destruct ());
+	}
+
+	IEnumerator destruct(){
+		yield return new WaitForSeconds (2);
+		GetComponent<ParticleSystem> ().Stop ();
+		yield return new WaitForSeconds (10);
+		Destroy (this.transform.root.gameObject);
+	}
+}
