@@ -11,7 +11,7 @@ public class destroySelf : MonoBehaviour {
 	IEnumerator destruct(){
 		yield return new WaitForSeconds (2);
 		GetComponent<ParticleSystem> ().Stop ();
-		yield return new WaitForSeconds (10);
+		yield return new WaitForSeconds (5);
 		Destroy (this.transform.root.gameObject);
 	}
 }
