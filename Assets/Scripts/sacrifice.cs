@@ -15,7 +15,9 @@ public class sacrifice : MonoBehaviour {
 
 			GameObject tik = GameObject.Find ("Anger");
 			string theObject = GameObject.Find ("SacText").GetComponent<Text> ().text;
+
 			Instantiate (fire, transform.position, Quaternion.Euler(Vector3.up));
+
 			GameObject.Find ("Main Camera").GetComponent<grabObject> ().doShake ();
 
 			if (col.transform.root.gameObject.name == theObject) {
@@ -28,15 +30,17 @@ public class sacrifice : MonoBehaviour {
 			} else {
 				col.transform.position = transform.position;
 				col.transform.GetComponentInChildren<Rigidbody> ().velocity = Vector3.zero;
-				col.transform.GetComponentInChildren<Rigidbody> ().velocity = new Vector3(0, 1f, -1f) * 18;
+				col.transform.GetComponentInChildren<Rigidbody> ().velocity = new Vector3(0, 1f, -1f) * 24;
 				GetComponent<AudioSource> ().Play ();
 				if (col.transform.GetComponentInChildren<MeshRenderer> ()) {
 					
 					col.transform.GetComponentInChildren<MeshRenderer> ().material = charredMat;
-				} else {
+				} else if (col.transform.GetComponentInChildren<MeshRenderer> ()) {
 					col.transform.GetComponentInChildren<SkinnedMeshRenderer> ().material = charredMat;
+				} else {
 				}
 			}
+			GameObject.Find ("ultraFire").GetComponent<destroySelf> ().explode ();
 		}
 	}
 }

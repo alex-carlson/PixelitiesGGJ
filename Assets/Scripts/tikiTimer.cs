@@ -28,7 +28,7 @@ public class tikiTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timeleft -= Time.deltaTime;
-		timeBar.GetComponent<RectTransform> ().sizeDelta = new Vector2 (timeleft * 10, 20);
+		timeBar.GetComponent<RectTransform> ().sizeDelta = new Vector2 (timeleft * 4, 20);
 
 		if (timeleft <= 0) {
 			timeleft = timer;
