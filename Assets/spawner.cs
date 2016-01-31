@@ -10,6 +10,7 @@ public class spawner : MonoBehaviour {
 	}
 
 	void spawnThings(){
-		Instantiate (throwables [Mathf.FloorToInt (Random.Range (0, throwables.Length))], transform.position, Quaternion.identity);
+		Vector3 randomVect = new Vector3 ( Random.Range(-15, 15), 0, Random.Range(-15, 15) );
+		Instantiate (throwables [Mathf.FloorToInt (Random.Range (0, throwables.Length))], transform.position+randomVect, Quaternion.identity);
 	}
 }
