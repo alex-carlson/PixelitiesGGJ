@@ -16,15 +16,13 @@ public class sacrifice : MonoBehaviour {
 			GameObject tik = GameObject.Find ("Anger");
 			string theObject = GameObject.Find ("SacText").GetComponent<Text> ().text;
 
-			Instantiate (fire, transform.position, Quaternion.Euler(Vector3.up));
+			//Instantiate (fire, transform.position, Quaternion.Euler(Vector3.up));
 
 			GameObject.Find ("Main Camera").GetComponent<grabObject> ().doShake ();
 
 			if (col.transform.root.gameObject.name == theObject+"(Clone)") {
 				score++;
 				GameObject.Find ("Score").GetComponent<Text> ().text = score + "";
-				tik.GetComponent<tikiTimer> ().timeleft = tik.GetComponent<tikiTimer> ().timer;
-				tik.GetComponent<tikiTimer> ().currStage++;
 				tik.GetComponent<tikiTimer> ().update2 ();
 				Destroy (col.transform.root.gameObject);
 			} else {

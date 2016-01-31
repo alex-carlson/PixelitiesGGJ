@@ -21,7 +21,7 @@ public class tikiTimer : MonoBehaviour {
 	void Start () {
 		timeleft = timer;
 		timeBar = GameObject.Find ("TimeLeft");
-		StartCoroutine (doStuff ());
+		//StartCoroutine (doStuff ());
 		gameMusic = GameObject.Find ("Game Music").GetComponent<AudioSource> ();
 	}
 	
@@ -35,14 +35,9 @@ public class tikiTimer : MonoBehaviour {
 			GetComponent<Animation> ().Play ();
 
 			if (currStage > -1) {
+				currStage--;
 				GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
 				GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage];
-			}
-
-			if (currStage > 4) {
-
-			} else {
-				currStage--;
 			}
 				
 			if (currStage == -1) {
@@ -53,7 +48,7 @@ public class tikiTimer : MonoBehaviour {
 				return;
 			}
 
-			if (currStage >= 0 && currStage < 5) {
+			if (currStage >= 0) {
 				StartCoroutine (fadeTo ());
 				GetComponent<Image> ().sprite = tikis [currStage];
 			}
@@ -68,6 +63,13 @@ public class tikiTimer : MonoBehaviour {
 				gameMusic.clip = musics [2];
 				gameMusic.Play ();
 			}
+		}
+
+		if (Input.GetKeyDown (KeyCode.T)) {
+			update2 ();
+		}
+		if (Input.GetKeyDown (KeyCode.Y)) {
+			timeleft = 0;
 		}
 	}
 
@@ -92,23 +94,26 @@ public class tikiTimer : MonoBehaviour {
 			yield return new WaitForSeconds(0.1f);
 		}
 
-		return true;
+		yield return true;
 	}
 
 	IEnumerator doStuff(){
+		if (currStage < 5) {
+			currStage++;
+		}
+
+		StartCoroutine (fadeTo ());
 		timeleft = timer;
 		GetComponent<Animation> ().Play ();
 		GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
 
-		if (currStage >= 0 && currStage < 5) {
+		if (currStage >= 0 && currStage <= 5) {
 			GetComponent<Image> ().sprite = tikis [currStage];
-
 		}
 
 		if (currStage == 0) {
 			StartCoroutine (GameOver ());
 		}
-
 		yield return null;
 	}
 
@@ -122,6 +127,6 @@ public class tikiTimer : MonoBehaviour {
 			progress += increment;
 			yield return new WaitForSeconds(0.1f);
 		}
-		return true;
+		yield return true;
 	}
 }

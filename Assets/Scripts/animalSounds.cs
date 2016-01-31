@@ -25,7 +25,6 @@ public class animalSounds : MonoBehaviour {
 		}
 
 		if (isHeld == true) {
-			Debug.Log (isHeld);
 			StopCoroutine (destroyAfterSecs ());
 		}
 	}
