@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Rewired;
 
 public class grabObject : MonoBehaviour {
 
@@ -28,6 +29,13 @@ public class grabObject : MonoBehaviour {
 
 	private Vector3 velocity = Vector3.zero;
 
+	private Player player;
+	public int playerid = 0;
+
+	void Awake(){
+		player = ReInput.players.GetPlayer(playerid);
+	}
+
 	void Start() {
 		Cursor.lockState = CursorLockMode.Locked;
 		cursor = GameObject.Find ("Cursor");
@@ -49,8 +57,8 @@ public class grabObject : MonoBehaviour {
 //		);
 //		lr.SetPosition(2, Camera.main.transform.position + camFwd.forward * 10);
 
-		yaw += speedH * Input.GetAxis("Mouse X");
-		pitch -= speedV * Input.GetAxis("Mouse Y");
+		yaw += speedH * player.GetAxis("Look Horizontal");
+		pitch -= speedV * player.GetAxis("Look Vertical");
 
 		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
