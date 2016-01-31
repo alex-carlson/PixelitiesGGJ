@@ -5,8 +5,6 @@ public class spawner : MonoBehaviour {
 
 	public GameObject[] throwables;
 
-	
-	// Update is called once per frame
 	void Start () {
 		InvokeRepeating ("spawnThings", 10f, 5f);
 	}

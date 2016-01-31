@@ -16,6 +16,7 @@ public class tikiTimer : MonoBehaviour {
 	void Start () {
 		timeleft = timer;
 		timeBar = GameObject.Find ("TimeLeft");
+		StartCoroutine (doStuff ());
 	}
 	
 	// Update is called once per frame
@@ -26,9 +27,14 @@ public class tikiTimer : MonoBehaviour {
 		if (timeleft <= 0) {
 			timeleft = timer;
 			GetComponent<Animation> ().Play ();
+			if (currStage > 4) {
+
+			} else {
+				currStage--;
+			}
+
 			GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
-			GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage-1];
-			currStage--;
+			GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage];
 
 			if (currStage >= 0 && currStage < 5) {
 				GetComponent<Image> ().sprite = tikis [currStage];
