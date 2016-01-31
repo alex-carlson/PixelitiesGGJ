@@ -8,33 +8,37 @@ public class animalSounds : MonoBehaviour {
 
 	Rigidbody rb;
 	AudioSource aud;
+	bool hasPlayed = false;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		aud = GetComponent<AudioSource> ();
-		StartCoroutine (idleSound ());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (rb.velocity.magnitude > 2f) {
+		if (rb.velocity.magnitude > 20f && hasPlayed == false) {
 			StartCoroutine (throwAnimal ());
-		} else {
-			aud.clip = pickupSound;
 		}
 	}
 
 	public IEnumerator throwAnimal(){
-		aud.Stop ();
+		hasPlayed = true;
 		aud.clip = throwSound;
 		aud.Play ();
+		StartCoroutine (revertSound ());
 		yield return null;
 	}
 
-	public IEnumerator idleSound(){
-		yield return new WaitForSeconds(Mathf.Round(Random.Range(30, 60)));
-		aud.Play ();
-		StartCoroutine (idleSound ());
+	IEnumerator revertSound(){
+		yield return new WaitForSeconds (2);
+		aud.clip = pickupSound;
+
+		if (aud.isPlaying == false && rb.velocity.magnitude < 2f) {
+			hasPlayed = false;
+		}
+
+		yield return null;
 	}
 }

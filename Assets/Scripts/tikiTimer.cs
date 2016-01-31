@@ -6,9 +6,14 @@ public class tikiTimer : MonoBehaviour {
 
 	public float timer = 15f;
 	public float timeleft;
-	public int currStage = 4;
+	public int currStage = 5;
 	public Sprite[] tikis;
 	public GameObject[] particles;
+	public Camera playerCam;
+
+	public Color[] skyboxColors;
+	AudioSource gameMusic;
+	public AudioClip[] musics;
 
 	GameObject timeBar;
 
@@ -17,6 +22,7 @@ public class tikiTimer : MonoBehaviour {
 		timeleft = timer;
 		timeBar = GameObject.Find ("TimeLeft");
 		StartCoroutine (doStuff ());
+		gameMusic = GameObject.Find ("Game Music").GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -27,21 +33,40 @@ public class tikiTimer : MonoBehaviour {
 		if (timeleft <= 0) {
 			timeleft = timer;
 			GetComponent<Animation> ().Play ();
+
+			if (currStage > -1) {
+				GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
+				GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage];
+			}
+
 			if (currStage > 4) {
 
 			} else {
 				currStage--;
 			}
-
-			GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
-			GameObject.Find ("VolcanoTrigger").GetComponent<sacrifice> ().fire = particles [currStage];
+				
+			if (currStage == -1) {
+				gameMusic.clip = musics [3];
+				gameMusic.Play ();
+				gameMusic.loop = false;
+				StartCoroutine (GameOver ());
+				return;
+			}
 
 			if (currStage >= 0 && currStage < 5) {
+				StartCoroutine (fadeTo ());
 				GetComponent<Image> ().sprite = tikis [currStage];
 			}
 
-			if (currStage == 0) {
-				StartCoroutine (GameOver ());
+			if (currStage == 4) {
+				gameMusic.clip = musics [0];
+				gameMusic.Play ();
+			} else if (currStage == 2) {
+				gameMusic.clip = musics [1];
+				gameMusic.Play ();
+			} else if (currStage == 0) {
+				gameMusic.clip = musics [2];
+				gameMusic.Play ();
 			}
 		}
 	}
@@ -51,10 +76,23 @@ public class tikiTimer : MonoBehaviour {
 	}
 
 	IEnumerator GameOver(){
-		Time.timeScale = 0.5f;
+
 		GameObject.Find ("You").GetComponent<Animation> ().Play ();
 		GameObject.Find ("Lose").GetComponent<Animation> ().Play ();
-		yield return null;
+
+		float progress = 0; //This float will serve as the 3rd parameter of the lerp function.
+		float increment = 0.1f/2f; //The amount of change to apply.
+		Color fadeCol = GameObject.Find ("fade").GetComponent<Image> ().color;
+
+		while(progress < 1)
+		{
+
+			fadeCol = Color.Lerp (fadeCol, new Color(0, 0, 0, 0.5f), progress);
+			progress += increment;
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		return true;
 	}
 
 	IEnumerator doStuff(){
@@ -72,5 +110,18 @@ public class tikiTimer : MonoBehaviour {
 		}
 
 		yield return null;
+	}
+
+	IEnumerator fadeTo(){
+
+		float progress = 0; //This float will serve as the 3rd parameter of the lerp function.
+		float increment = 0.1f/2f; //The amount of change to apply.
+		while(progress < 1)
+		{
+			playerCam.backgroundColor = Color.Lerp (playerCam.backgroundColor, skyboxColors[currStage], progress);
+			progress += increment;
+			yield return new WaitForSeconds(0.1f);
+		}
+		return true;
 	}
 }

@@ -58,7 +58,7 @@ public class grabObject : MonoBehaviour {
 			
 			heldObject.transform.position = Vector3.SmoothDamp (
 				heldObject.transform.position,
-				Camera.main.transform.position + (camFwd.forward * 4),
+				Camera.main.transform.position + (camFwd.forward * 4) + (camFwd.up * -0.8f),
 				ref velocity,
 				0.1f
 			);

@@ -28,8 +28,13 @@ public class sacrifice : MonoBehaviour {
 			} else {
 				col.transform.position = transform.position;
 				col.transform.GetComponentInChildren<Rigidbody> ().velocity = Vector3.zero;
-				col.transform.GetComponentInChildren<Rigidbody> ().velocity = new Vector3(0, 1f, -1f) * 12;
-				col.transform.GetComponentInChildren<MeshRenderer> ().material = charredMat;
+				col.transform.GetComponentInChildren<Rigidbody> ().velocity = new Vector3(0, 1f, -1f) * 18;
+				if (col.transform.GetComponentInChildren<MeshRenderer> ()) {
+					
+					col.transform.GetComponentInChildren<MeshRenderer> ().material = charredMat;
+				} else {
+					col.transform.GetComponentInChildren<SkinnedMeshRenderer> ().material = charredMat;
+				}
 			}
 		}
 	}
