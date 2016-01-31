@@ -68,7 +68,7 @@ public class grabObject : MonoBehaviour {
 		}
 
 		if (Physics.Raycast(transform.position, fwd, out hit)) {
-			if (hit.transform.tag == "Pickup") {
+			if (hit.transform.tag == "Pickup" && hit.distance < 8) {
 
 				cursor.GetComponent<Image> ().sprite = activeCursor;
 

@@ -27,7 +27,6 @@ public class virginJetpack : MonoBehaviour {
 	}
 
 	void TurnRandom(){
-		Debug.Log ("ay");
-		dir = Quaternion.Slerp (transform.rotation, Quaternion.Euler (0, Random.Range (0, 359), 0), 0.3f);
+		dir = Quaternion.Euler (0, Random.Range (0, 359), 0);
 	}
 }
