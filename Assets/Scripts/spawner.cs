@@ -6,7 +6,7 @@ public class spawner : MonoBehaviour {
 	public GameObject[] throwables;
 
 	void Start () {
-		InvokeRepeating ("spawnThings", 5f, 5f);
+		InvokeRepeating ("spawnThings", 5f, 15f);
 	}
 
 	void spawnThings(){
