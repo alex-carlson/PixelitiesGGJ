@@ -6,11 +6,11 @@ public class spawner : MonoBehaviour {
 	public GameObject[] throwables;
 
 	void Start () {
-		InvokeRepeating ("spawnThings", 10f, 5f);
+		InvokeRepeating ("spawnThings", 5f, 5f);
 	}
 
 	void spawnThings(){
-		Vector3 randomVect = new Vector3 ( Random.Range(-15, 15), 0, Random.Range(-15, 15) );
+		Vector3 randomVect = new Vector3 ( Random.Range(-8, 8), 0, Random.Range(-8, 8) );
 		Instantiate (throwables [Mathf.FloorToInt (Random.Range (0, throwables.Length))], transform.position+randomVect, Quaternion.identity);
 	}
 }
