@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class sacrifice : MonoBehaviour {
 
 	public GameObject fire;
+	public GameObject steam;
+	public Material charredMat;
 
 	public static int score;
 
@@ -27,6 +29,7 @@ public class sacrifice : MonoBehaviour {
 				col.transform.position = transform.position;
 				col.transform.GetComponentInChildren<Rigidbody> ().velocity = Vector3.zero;
 				col.transform.GetComponentInChildren<Rigidbody> ().velocity = new Vector3(0, 1f, -1f) * 12;
+				col.transform.GetComponentInChildren<MeshRenderer> ().material = charredMat;
 			}
 		}
 	}

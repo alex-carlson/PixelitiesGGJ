@@ -94,7 +94,7 @@ public class grabObject : MonoBehaviour {
 							heldObject.GetComponent<AudioSource> ().Play ();
 						}
 					} else {
-						heldObject.GetComponent<Rigidbody> ().AddForce ((camFwd.forward * force) * 120);
+						heldObject.GetComponent<Rigidbody> ().AddForce ((camFwd.forward * force) * 140);
 						isHolding = false;
 					}
 				}
