@@ -14,6 +14,7 @@ public class animalSounds : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		aud = GetComponent<AudioSource> ();
+		Destroy (this.transform.root.gameObject, 20);
 	}
 	
 	// Update is called once per frame
