@@ -9,18 +9,24 @@ public class animalSounds : MonoBehaviour {
 	Rigidbody rb;
 	AudioSource aud;
 	bool hasPlayed = false;
+	public bool isHeld = false;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		aud = GetComponent<AudioSource> ();
-		Destroy (this.transform.root.gameObject, 20);
+		StartCoroutine (destroyAfterSecs ());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (rb.velocity.magnitude > 20f && hasPlayed == false) {
 			StartCoroutine (throwAnimal ());
+		}
+
+		if (isHeld == true) {
+			Debug.Log (isHeld);
+			StopCoroutine (destroyAfterSecs ());
 		}
 	}
 
@@ -40,6 +46,14 @@ public class animalSounds : MonoBehaviour {
 			hasPlayed = false;
 		}
 
+		yield return null;
+	}
+
+	IEnumerator destroyAfterSecs(){
+		yield return new WaitForSeconds (45);
+		if (isHeld == false) {
+			Destroy (this.transform.root.gameObject);
+		}
 		yield return null;
 	}
 }

@@ -20,8 +20,6 @@ public class sacrifice : MonoBehaviour {
 
 			GameObject.Find ("Main Camera").GetComponent<grabObject> ().doShake ();
 
-			Debug.Log (col.transform.root.gameObject.name+", "+theObject+"(Clone)");
-
 			if (col.transform.root.gameObject.name == theObject+"(Clone)") {
 				score++;
 				GameObject.Find ("Score").GetComponent<Text> ().text = score + "";

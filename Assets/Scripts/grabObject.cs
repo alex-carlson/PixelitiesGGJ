@@ -98,6 +98,7 @@ public class grabObject : MonoBehaviour {
 
 					if (isHolding == false) {
 						isHolding = true;
+						heldObject.GetComponent<animalSounds> ().isHeld = true;
 						if (heldObject.GetComponent<AudioSource> ()) {
 							heldObject.GetComponent<AudioSource> ().Play ();
 						}
