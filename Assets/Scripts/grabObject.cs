@@ -57,8 +57,8 @@ public class grabObject : MonoBehaviour {
 //		);
 //		lr.SetPosition(2, Camera.main.transform.position + camFwd.forward * 10);
 
-		yaw += speedH * player.GetAxis("Look Horizontal");
-		pitch -= speedV * player.GetAxis("Look Vertical");
+		yaw += speedH * Input.GetAxis("Mouse X");
+		pitch -= speedV * Input.GetAxis("Mouse Y");
 
 		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
@@ -66,7 +66,7 @@ public class grabObject : MonoBehaviour {
 			
 			heldObject.transform.position = Vector3.SmoothDamp (
 				heldObject.transform.position,
-				Camera.main.transform.position + (camFwd.forward * 4) + (camFwd.up * -0.8f),
+				Camera.main.transform.position + (camFwd.forward * 4),
 				ref velocity,
 				0.1f
 			);
