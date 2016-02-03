@@ -41,7 +41,7 @@ public class grabObject : MonoBehaviour {
 		cursor = GameObject.Find ("Cursor");
 		lr = GetComponent<LineRenderer> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		camFwd = Camera.main.transform;
@@ -49,13 +49,13 @@ public class grabObject : MonoBehaviour {
 
 		RaycastHit hit;
 
-//		lr.SetPosition (0, transform.position+Vector3.down);
-//		lr.SetPosition(1, 
-//			Vector3.Lerp(
-//				transform.position, camFwd.position + camFwd.forward*7 + camFwd.up * 2, 0.5f
-//			) 
-//		);
-//		lr.SetPosition(2, Camera.main.transform.position + camFwd.forward * 10);
+		//		lr.SetPosition (0, transform.position+Vector3.down);
+		//		lr.SetPosition(1, 
+		//			Vector3.Lerp(
+		//				transform.position, camFwd.position + camFwd.forward*7 + camFwd.up * 2, 0.5f
+		//			) 
+		//		);
+		//		lr.SetPosition(2, Camera.main.transform.position + camFwd.forward * 10);
 
 		yaw += speedH * Input.GetAxis("Mouse X");
 		pitch -= speedV * Input.GetAxis("Mouse Y");
@@ -63,7 +63,7 @@ public class grabObject : MonoBehaviour {
 		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
 		if (heldObject != null && isHolding == true) {
-			
+
 			heldObject.transform.position = Vector3.SmoothDamp (
 				heldObject.transform.position,
 				Camera.main.transform.position + (camFwd.forward * 4),
@@ -103,8 +103,9 @@ public class grabObject : MonoBehaviour {
 							heldObject.GetComponent<AudioSource> ().Play ();
 						}
 					} else {
-						heldObject.GetComponent<Rigidbody> ().AddForce ((camFwd.forward * force) * 180);
+						heldObject.GetComponent<Rigidbody> ().AddForce ((transform.forward * force) * 180);
 						isHolding = false;
+						StartCoroutine (Shake ());
 					}
 				}
 			} else {
@@ -123,9 +124,11 @@ public class grabObject : MonoBehaviour {
 
 		}
 	}
+
 	public void doShake(){
-		//StartCoroutine (Shake ());
+		StartCoroutine (Shake ());
 	}
+
 	IEnumerator Shake() {
 
 		float elapsed = 0.0f;
@@ -141,11 +144,11 @@ public class grabObject : MonoBehaviour {
 
 			// map value to [-1, 1]
 			float x = Random.value * 2.0f - 1.0f;
-			float y = Random.value * 2.0f - 1.0f;
-			x *= magnitude * damper;
-			y *= magnitude * damper;
+			float z = Random.value * 2.0f - 1.0f;
+			x *= magnitude;
+			z *= magnitude;
 
-			Camera.main.transform.position = new Vector3(x, y, originalCamPos.z);
+			Camera.main.transform.localPosition = new Vector3(x, originalCamPos.y, z);
 
 			yield return null;
 		}
