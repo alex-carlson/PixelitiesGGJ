@@ -23,6 +23,7 @@ public class tikiTimer : MonoBehaviour {
 		timeBar = GameObject.Find ("TimeLeft");
 		//StartCoroutine (doStuff ());
 		gameMusic = GameObject.Find ("Game Music").GetComponent<AudioSource> ();
+		GameObject.Find ("SacText").GetComponent<currentSacrifice> ().UpdateSacrifice ();
 	}
 	
 	// Update is called once per frame

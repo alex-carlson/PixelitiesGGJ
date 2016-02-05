@@ -27,7 +27,7 @@ public class virginJetpack : MonoBehaviour {
 	void Update () {
 		dist = Vector3.Distance (transform.position, playerPos);
 
-		if (dist < 10) {
+		if (dist < 20) {
 
 			ani.speed = 1;
 			
@@ -42,6 +42,7 @@ public class virginJetpack : MonoBehaviour {
 	}
 
 	void TurnRandom(){
+		rb.velocity = Vector3.zero;
 		dir = Quaternion.Euler (0, Random.Range (0, 359), 0);
 	}
 }

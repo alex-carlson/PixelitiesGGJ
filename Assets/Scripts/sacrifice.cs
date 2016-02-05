@@ -18,8 +18,6 @@ public class sacrifice : MonoBehaviour {
 
 			//Instantiate (fire, transform.position, Quaternion.Euler(Vector3.up));
 
-			GameObject.Find ("Main Camera").GetComponent<grabObject> ().doShake ();
-
 			if (col.transform.root.gameObject.name == theObject+"(Clone)") {
 				score++;
 				GameObject.Find ("Score").GetComponent<Text> ().text = score + "";

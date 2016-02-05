@@ -57,22 +57,22 @@ public class grabObject : MonoBehaviour {
 		//		);
 		//		lr.SetPosition(2, Camera.main.transform.position + camFwd.forward * 10);
 
-		yaw += speedH * Input.GetAxis("Mouse X");
-		pitch -= speedV * Input.GetAxis("Mouse Y");
+		pitch += player.GetAxis ("Look Horizontal") * speedH;
+		yaw -= player.GetAxis ("Look Vertical") * speedV;
 
-		transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+		transform.rotation = Quaternion.Euler (yaw, pitch, 0);
 
 		if (heldObject != null && isHolding == true) {
 
 			heldObject.transform.position = Vector3.SmoothDamp (
 				heldObject.transform.position,
-				Camera.main.transform.position + (camFwd.forward * 4),
+				camFwd.position + (camFwd.forward * 4),
 				ref velocity,
 				0.1f
 			);
 
 			heldObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
-			heldObject.transform.rotation = Quaternion.identity;
+			//heldObject.transform.rotation = Quaternion.identity;
 		}
 
 		if (Physics.Raycast(transform.position, fwd, out hit)) {
@@ -93,7 +93,7 @@ public class grabObject : MonoBehaviour {
 				);
 
 				// clicked on a pickupable thing
-				if (Input.GetButtonDown ("Fire1")) {
+				if (player.GetButtonDown ("Use")) {
 					heldObject = hit.transform.gameObject;
 
 					if (isHolding == false) {

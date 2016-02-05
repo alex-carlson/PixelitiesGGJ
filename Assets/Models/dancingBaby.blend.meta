@@ -105,7 +105,307 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 249
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: baby
+        weight: 1
+      - path: baby/hips
+        weight: 1
+      - path: baby/hips/spine
+        weight: 1
+      - path: baby/hips/spine/chest
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/f_index_01_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/f_ring_01_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/thumb_02_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/thumb_02_L/thumb_03_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/f_index_01_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/f_ring_01_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/thumb_02_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: baby/hips/spine/chest/neck
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/eye_L
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/eye_R
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/jaw
+        weight: 1
+      - path: baby/hips/thigh_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: baby/hips/thigh_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: baby_Body
+        weight: 1
+      - path: baby_Low-Poly
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: baby61_01
+      takeName: baby61_01
+      firstFrame: 0
+      lastFrame: 217
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: baby
+        weight: 1
+      - path: baby/hips
+        weight: 1
+      - path: baby/hips/spine
+        weight: 1
+      - path: baby/hips/spine/chest
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/f_index_01_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/f_ring_01_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/thumb_02_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/thumb_02_L/thumb_03_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/f_index_01_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/f_ring_01_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/thumb_02_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: baby/hips/spine/chest/neck
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/eye_L
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/eye_R
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/jaw
+        weight: 1
+      - path: baby/hips/thigh_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: baby/hips/thigh_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: baby_Body
+        weight: 1
+      - path: baby_Low-Poly
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: baby61_01_001
+      takeName: baby61_01_001
+      firstFrame: -1
+      lastFrame: 249
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: baby
+        weight: 1
+      - path: baby/hips
+        weight: 1
+      - path: baby/hips/spine
+        weight: 1
+      - path: baby/hips/spine/chest
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/f_index_01_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/f_ring_01_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/thumb_02_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_L/upper_arm_L/forearm_L/hand_L/thumb_02_L/thumb_03_L
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/f_index_01_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/f_ring_01_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/thumb_02_R
+        weight: 1
+      - path: baby/hips/spine/chest/clavicle_R/upper_arm_R/forearm_R/hand_R/thumb_02_R/thumb_03_R
+        weight: 1
+      - path: baby/hips/spine/chest/neck
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/eye_L
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/eye_R
+        weight: 1
+      - path: baby/hips/spine/chest/neck/head/jaw
+        weight: 1
+      - path: baby/hips/thigh_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: baby/hips/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: baby/hips/thigh_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: baby/hips/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: baby_Body
+        weight: 1
+      - path: baby_Low-Poly
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

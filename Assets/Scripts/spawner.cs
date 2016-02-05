@@ -10,7 +10,7 @@ public class spawner : MonoBehaviour {
 	}
 
 	void spawnThings(){
-		Vector3 randomVect = new Vector3 ( Random.Range(-1, 1), 0, Random.Range(-1, 1) );
+		Vector3 randomVect = new Vector3 ( Random.Range(-3, 3), 0, Random.Range(-3, 3) );
 		GameObject go = Instantiate(throwables [Mathf.FloorToInt (Random.Range (0, throwables.Length))], transform.position+randomVect, Quaternion.identity) as GameObject;
 		go.transform.parent = GameObject.Find ("AnimalSpawns").transform;
 	}

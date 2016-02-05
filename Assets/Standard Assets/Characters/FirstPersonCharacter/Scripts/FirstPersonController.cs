@@ -18,7 +18,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		[SerializeField] private float m_JumpSpeed;
 		[SerializeField] private float m_StickToGroundForce;
 		[SerializeField] private float m_GravityMultiplier;
-		[SerializeField] private MouseLook m_MouseLook;
 		[SerializeField] private bool m_UseFovKick;
 		[SerializeField] private FOVKick m_FovKick = new FOVKick();
 		[SerializeField] private bool m_UseHeadBob;
@@ -62,7 +61,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_NextStep = m_StepCycle/2f;
 			m_Jumping = false;
 			m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
 		}
 
 
@@ -70,11 +68,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private void Update()
 		{
 
-			RotateView();
+			transform.rotation = m_Camera.transform.rotation;
+
 			// the jump state needs to read here to make sure it is not missed
 			if (!m_Jump)
 			{
-				m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+				m_Jump = player.GetButtonDown("Jump");
 			}
 
 			if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
@@ -139,7 +138,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			ProgressStepCycle(speed);
 			UpdateCameraPosition(speed);
 
-			m_MouseLook.UpdateCursorLock();
 		}
 
 
@@ -221,9 +219,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			#if !MOBILE_INPUT
 			// On standalone builds, walk/run speed is modified by a key press.
 			// keep track of whether or not the character is walking or running
-			if(Input.GetKey(KeyCode.LeftShift)){
-				m_IsWalking = false;
-			} else if (Input.GetKey(KeyCode.RightShift)){
+			if(player.GetButton("Sprint")){
 				m_IsWalking = false;
 			} else {
 				m_IsWalking = true;
@@ -246,12 +242,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				StopAllCoroutines();
 				StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
 			}
-		}
-
-
-		private void RotateView()
-		{
-			m_MouseLook.LookRotation (transform, m_Camera.transform);
 		}
 
 
