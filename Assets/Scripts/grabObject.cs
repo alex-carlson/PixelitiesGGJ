@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class grabObject : MonoBehaviour {
 
@@ -125,6 +126,10 @@ public class grabObject : MonoBehaviour {
 				);
 			}
 
+		}
+
+		if (player.GetButtonDown ("Reset")) {
+			SceneManager.LoadScene (0);
 		}
 	}
 
