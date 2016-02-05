@@ -102,6 +102,9 @@ public class grabObject : MonoBehaviour {
 						if (heldObject.GetComponent<AudioSource> ()) {
 							heldObject.GetComponent<AudioSource> ().Play ();
 						}
+						if (GetComponent<Animator> ()) {
+							GetComponent<Animator> ().enabled = false;
+						}
 					} else {
 						heldObject.GetComponent<Rigidbody> ().AddForce ((transform.forward * force) * 180);
 						isHolding = false;
