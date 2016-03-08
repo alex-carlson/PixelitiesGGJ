@@ -61,20 +61,19 @@ public class grabObject : MonoBehaviour {
 		pitch += player.GetAxis ("Look Horizontal") * speedH;
 		yaw -= player.GetAxis ("Look Vertical") * speedV;
 
+		yaw = Mathf.Clamp (yaw, -90, 90);
+
 		transform.rotation = Quaternion.Euler (yaw, pitch, 0);
 
 		if (heldObject != null && isHolding == true) {
 
-			heldObject.transform.position = Vector3.SmoothDamp (
-				heldObject.transform.position,
-				camFwd.position + (camFwd.forward * 4),
-				ref velocity,
-				0.1f
-			);
+			heldObject.transform.position = camFwd.position + (fwd * 4);
 
 			heldObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 			//heldObject.transform.rotation = Quaternion.identity;
 		}
+
+		Debug.DrawRay (transform.position, fwd, Color.red);
 
 		if (Physics.Raycast(transform.position, fwd, out hit)) {
 			if (hit.transform.tag == "Pickup" && hit.distance < 8) {
@@ -107,7 +106,7 @@ public class grabObject : MonoBehaviour {
 							GetComponent<Animator> ().enabled = false;
 						}
 					} else {
-						heldObject.GetComponent<Rigidbody> ().AddForce ((transform.forward * force) * 180);
+						heldObject.GetComponent<Rigidbody> ().AddForce ((fwd * force) * 180);
 						isHolding = false;
 						StartCoroutine (Shake ());
 					}

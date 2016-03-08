@@ -20,7 +20,7 @@ public class virginJetpack : MonoBehaviour {
 		dir = Quaternion.Euler (0, 0, 0);
 		ani = GetComponent<Animator> ();
 		ani.speed = 0;
-		playerPos = GameObject.FindGameObjectWithTag ("Player").transform.position;
+		playerPos = GameObject.FindGameObjectWithTag ("MainCamera").transform.position;
 	}
 	
 	// Update is called once per frame

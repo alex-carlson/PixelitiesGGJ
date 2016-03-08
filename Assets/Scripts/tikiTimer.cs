@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class tikiTimer : MonoBehaviour {
 
-	public float timer = 15f;
+	public float timer = 90f;
 	public float timeleft;
 	public int currStage = 5;
 	public Sprite[] tikis;
@@ -19,6 +19,7 @@ public class tikiTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+    timer = 90f;
 		timeleft = timer;
 		timeBar = GameObject.Find ("TimeLeft");
 		//StartCoroutine (doStuff ());

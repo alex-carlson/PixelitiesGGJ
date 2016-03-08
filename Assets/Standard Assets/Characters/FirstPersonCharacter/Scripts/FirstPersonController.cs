@@ -53,7 +53,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private void Start()
 		{
 			m_CharacterController = GetComponent<CharacterController>();
-			m_Camera = Camera.main;
+			m_Camera = GetComponentInChildren<Camera>();
 			m_OriginalCameraPosition = m_Camera.transform.localPosition;
 			m_FovKick.Setup(m_Camera);
 			m_HeadBob.Setup(m_Camera, m_StepInterval);
@@ -68,7 +68,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		private void Update()
 		{
 
-			transform.rotation = m_Camera.transform.rotation;
+			//transform.rotation = m_Camera.transform.rotation;
+			//transform.rotation = Quaternion.Euler(new Vector3(0, m_Camera.transform.rotation.y, 0));
 
 			// the jump state needs to read here to make sure it is not missed
 			if (!m_Jump)
@@ -102,10 +103,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 		private void FixedUpdate()
 		{
+
 			float speed;
 			GetInput(out speed);
 			// always move along the camera forward as it is the direction that it being aimed at
-			Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
+			Vector3 desiredMove = Camera.main.transform.forward*m_Input.y + Camera.main.transform.right*m_Input.x;
 
 			// get a normal for the surface that is being touched to move along it
 			RaycastHit hitInfo;
